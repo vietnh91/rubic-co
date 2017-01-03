@@ -4,6 +4,19 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
     
     <script src="https://www.gstatic.com/firebasejs/3.6.4/firebase.js"></script>
+
+  </head>
+  <body>
+    <div ng-controller="appCtrl">
+        <label>Name:</label>
+        <input type="text" ng-model="yourName" placeholder="Enter a name here">
+        <input type="submit" value="Send" ng-click="send()">
+
+        <hr>
+        <h1>Hello {{yourName}}!</h1>
+    </div>
+
+
     <script>
       
       var app = angular.module('app', ['firebase']);
@@ -40,19 +53,5 @@
       }]);
     </script>
 
-
-  </head>
-  <body>
-    <div ng-controller="appCtrl">
-      <form ng-submit="send()">
-        
-        <label>Name:</label>
-        <input type="text" ng-model="yourName" placeholder="Enter a name here">
-        <input type="submit" value="Send">
-
-        <hr>
-        <h1>Hello {{yourName}}!</h1>
-      </form>
-    </div>
   </body>
 </html>
