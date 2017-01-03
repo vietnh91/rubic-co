@@ -8,7 +8,7 @@
       
       var app = angular.module('app', ['firebase']);
 
-      app.controller('chatCtrl', ['$scope', '$firebase', function($scope, $firebase) {
+      app.controller('appCtrl', ['$scope', '$firebase', function($scope, $firebase) {
       
           // Initialize Firebase
           var config = {
@@ -43,7 +43,7 @@
 
   </head>
   <body>
-    <div>
+    <div ng-controller="appCtrl">
       <form ng-submit="send()">
         
         <label>Name:</label>
