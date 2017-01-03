@@ -5,16 +5,41 @@
     
     <script src="https://www.gstatic.com/firebasejs/3.6.4/firebase.js"></script>
     <script>
-      // Initialize Firebase
-      var config = {
-        apiKey: "AIzaSyDKun-G5GzLMoaLDAEnRqYH4X1xBuLmhrE",
-        authDomain: "rubic-co.firebaseapp.com",
-        databaseURL: "https://rubic-co.firebaseio.com",
-        storageBucket: "rubic-co.appspot.com",
-        messagingSenderId: "471694731914"
-      };
-      firebase.initializeApp(config);
+      
+      var app = angular.module('app', ['firebase']);
+
+      app.controller('chatCtrl', ['$scope', '$firebase', function($scope, $firebase) {
+      
+          // Initialize Firebase
+          var config = {
+            apiKey: "AIzaSyDKun-G5GzLMoaLDAEnRqYH4X1xBuLmhrE",
+            authDomain: "rubic-co.firebaseapp.com",
+            databaseURL: "https://rubic-co.firebaseio.com",
+            storageBucket: "rubic-co.appspot.com",
+            messagingSenderId: "471694731914"
+          };
+          firebase.initializeApp(config);
+          var subscriber = {
+              id: 1,
+              name: 'vietnh'
+          };
+          $scope.send = function() {
+              var newPostKey = firebase.database().ref().child('subscriber').push().key;
+
+              // Write the new post's data simultaneously in the posts list and the user's post list.
+              var updates = {};
+              updates['/subscriber/' + newSubscriberKey] = subscriber;
+
+              firebase.database().ref().update(updates);
+          }
+          $scope.clear = function() {
+              for(var i = 0; i < $scope.chatMessages.length; i++) {
+                  $scope.chatMessages.$remove($scope.chatMessages[i]);
+              }
+          }
+      }]);
     </script>
+
 
   </head>
   <body>
