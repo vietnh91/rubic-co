@@ -2,6 +2,20 @@
 <html ng-app>
   <head>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+    
+    <script src="https://www.gstatic.com/firebasejs/3.6.4/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyDKun-G5GzLMoaLDAEnRqYH4X1xBuLmhrE",
+        authDomain: "rubic-co.firebaseapp.com",
+        databaseURL: "https://rubic-co.firebaseio.com",
+        storageBucket: "rubic-co.appspot.com",
+        messagingSenderId: "471694731914"
+      };
+      firebase.initializeApp(config);
+    </script>
+
   </head>
   <body>
     <div>
