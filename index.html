@@ -6,7 +6,7 @@
     <script src="https://www.gstatic.com/firebasejs/3.6.4/firebase.js"></script>
 
   </head>
-  <body>
+  <body ng-app="app">
     <div ng-controller="appCtrl">
         <label>Name:</label>
         <input type="text" ng-model="yourName" placeholder="Enter a name here">
@@ -45,11 +45,7 @@
 
               firebase.database().ref().update(updates);
           }
-          $scope.clear = function() {
-              for(var i = 0; i < $scope.chatMessages.length; i++) {
-                  $scope.chatMessages.$remove($scope.chatMessages[i]);
-              }
-          }
+          
       }]);
     </script>
 
