@@ -1,53 +1,84 @@
 <!doctype html>
-<html ng-app>
-  <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>jhipster</title>
+    <meta name="description" content="">
+    <meta name="google" value="notranslate">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css content/css/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css">
+    <!-- endinject -->
+    <!-- endbuild -->
+    <!-- build:css content/css/main.css <link rel="stylesheet" href="content/css/main.css"> -->
     
-    <script src="https://www.gstatic.com/firebasejs/3.6.4/firebase.js"></script>
+    <!-- endbuild -->
+</head>
+<body ng-app="jhipsterApp" ng-strict-di>
+    <!--[if lt IE 9]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <page-ribbon></page-ribbon>
+    <div ui-view="navbar" ng-cloak></div>
+    <div class="container">
+        <div class="well" ui-view="content">
+            <!-- Angular views -->
+        </div>
 
-  </head>
-  <body ng-app="app">
-    <div ng-controller="appCtrl">
-        <label>Name:</label>
-        <input type="text" ng-model="yourName" placeholder="Enter a name here">
-        <input type="submit" value="Send" ng-click="send()">
-
-        <hr>
-        <h1>Hello {{yourName}}!</h1>
+        <div class="footer" ng-cloak>
+            <p data-translate="footer">This is your footer</p>
+        </div>
     </div>
 
-
+    <!-- Google Analytics: uncomment and change UA-XXXXX-X to be your site's ID.
     <script>
-      
-      var app = angular.module('app', ['firebase']);
+        (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+        e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+        e.src='//www.google-analytics.com/analytics.js';
+        r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+        ga('create','UA-XXXXX-X');ga('send','pageview');
+    </script>-->
 
-      app.controller('appCtrl', ['$scope', '$firebase', function($scope, $firebase) {
-      
-          // Initialize Firebase
-          var config = {
-            apiKey: "AIzaSyDKun-G5GzLMoaLDAEnRqYH4X1xBuLmhrE",
-            authDomain: "rubic-co.firebaseapp.com",
-            databaseURL: "https://rubic-co.firebaseio.com",
-            storageBucket: "rubic-co.appspot.com",
-            messagingSenderId: "471694731914"
-          };
-          firebase.initializeApp(config);
-          var subscriber = {
-              id: 1,
-              name: 'vietnh'
-          };
-          $scope.send = function() {
-              var newPostKey = firebase.database().ref().child('subscriber').push().key;
+    <!-- build:js app/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/messageformat/messageformat.js"></script>
+    <script src="bower_components/json3/lib/json3.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/angular-cache-buster/angular-cache-buster.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-dynamic-locale/src/tmhDynamicLocale.js"></script>
+    <script src="bower_components/ngstorage/ngStorage.js"></script>
+    <script src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-translate/angular-translate.js"></script>
+    <script src="bower_components/angular-translate-interpolation-messageformat/angular-translate-interpolation-messageformat.js"></script>
+    <script src="bower_components/angular-translate-loader-partial/angular-translate-loader-partial.js"></script>
+    <script src="bower_components/angular-translate-storage-cookie/angular-translate-storage-cookie.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/bootstrap-ui-datetime-picker/dist/datetime-picker.js"></script>
+    <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
+    <script src="bower_components/ngInfiniteScroll/build/ng-infinite-scroll.js"></script>
+    <!-- endinject -->
+    <!-- endbuild -->
 
-              // Write the new post's data simultaneously in the posts list and the user's post list.
-              var updates = {};
-              updates['/subscriber/' + newSubscriberKey] = subscriber;
+    <!-- build:js app/app.js  -->
+    <!-- inject:js -->
+    <script src="app/app.module.js"></script>
+    <script src="app/layouts/navbar/navbar.controller.js"></script>
+    <script src="app/layouts/error/error.state.js"></script>
+    <script src="app/home/home.state.js"></script>
+    <script src="app/home/home.controller.js"></script>
+    <script src="app/app.state.js"></script>
+    <script src="app/app.constants.js"></script>
 
-              firebase.database().ref().update(updates);
-          }
-          
-      }]);
-    </script>
-
-  </body>
+</body>
 </html>
